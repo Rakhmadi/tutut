@@ -14,7 +14,23 @@
     let open_modal = ()=>{
         Tutut.info()
     }
-            Tutut.info()
+            Tutut.delete({
+                title : "Message",
+                text : "Data akan di hapus apa anda yakin?"
+            },{
+                showConfirm : true,
+                onConfirm : ()=>{
+
+                    Tutut.info({
+                        title : "Message",
+                        text : "Data Berhasil Di Hapus"
+                    },{
+                        showConfirm : true,
+                    })
+
+                },
+                onCancel : true
+            })
 
 
 //   let modal = document.getElementById("modal")

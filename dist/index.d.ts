@@ -9,6 +9,11 @@ type Option = {
     onCancel?: Function | undefined;
 };
 declare class Tutut {
-    static renderHTML(type_msg: string, message: Message, option?: Option): void;
-    static info(): void;
+    static renderHTML(type_msg: string, message: Message, option?: Partial<Option>): void;
+    static info(message: Message, option: Option): void;
+    static success(message: Message, option: Option): void;
+    static warning(message: Message, option: Option): void;
+    static danger(message: Message, option: Option): void;
+    static confirm(message: Message, option: Option): void;
+    static delete(message: Message, option: Option): void;
 }

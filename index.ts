@@ -12,7 +12,7 @@ type Option = {
 }
 
 class Tutut { 
-    static renderHTML(type_msg:string,message:Message,option:Option = { showCloseButton:true }){
+    static renderHTML(type_msg:string,message:Message,option:Partial<Option> = {}){
 
         const { showConfirm, onConfirm, onCancel, showCloseButton } = option
         //clearing 
@@ -78,11 +78,10 @@ class Tutut {
                     <button class="tutut_button tutut_button_warning" id="tutut_confirm">Confirm</button>
                 </div>
             `
-        }else{
+        }else if(showConfirm){
             button_grup = `
                 <div class="tutut_bottom_row">
-                    <button class="tutut_button tutut_button_gray" id="tutut_cancel">Cancel</button>
-                    <button class="tutut_button tutut_button_default" id="tutut_confirm">Confirm</button>
+                    <button class="tutut_button tutut_button_default" id="tutut_ok">Oke</button>
                 </div>
             `
         }
@@ -95,8 +94,8 @@ class Tutut {
                 <!-- for icon -->       
                     ${div_icon}
                     <div class="tutut_inner_body_modal">
-                        <span class="tutut_title_body">${message?.title}</span>
-                        <span class="tutut_text_gray">a${message?.text}</span>
+                        <span class="tutut_title_body">${(message?.title) ? message?.title : ""}</span>
+                        <span class="tutut_text_gray">${(message?.text) ? message?.text : ""}</span>
                     </div>
                 </div>
                 <div class="tutut_cls_button" id="cls_btn">
@@ -104,11 +103,11 @@ class Tutut {
                 </div>
             </div>
                 <!-- for button confirn  -->       
-                ${button_grup}
+                ${(button_grup)? button_grup : ""}
 
         </div>
     </div>`
-    // add element tot body
+    // add element to body
         document.querySelector("body")?.insertAdjacentHTML("beforeend",html_modal)
 
         let modal:any = document.getElementById("modal")
@@ -127,10 +126,10 @@ class Tutut {
 
         let cls_btn:any =document.getElementById("cls_btn")
 
-        if(!showCloseButton){
+        if(!showCloseButton && showCloseButton !== undefined){
             cls_btn.style.display = "none"
         }
-         
+
         modal.onclick = (e:any)=>{
             if(e.target === e.currentTarget){
                 removeDom()             
@@ -138,11 +137,10 @@ class Tutut {
         }
         
         cls_btn.onclick = ()=>{
-                removeDom()
+            removeDom()
         }
 
         document.getElementById("tutut_cancel")?.addEventListener("click",()=>{
-
             removeDom()
             onCancel && onCancel()
         })
@@ -150,17 +148,33 @@ class Tutut {
             removeDom()
             onConfirm && onConfirm()
         })
-    }
-
-    static info(){
-        Tutut.renderHTML("warning",{
-            title : "Altert",
-            text : "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Possimus quos repudiandae est odit earum, facilis sequi tempore quo deserunt molestiae fugit quaerat optio quidem? Quisquam cupiditate ipsam adipisci saepe placeat."
-        },{ 
-            showCloseButton : false,
-            showConfirm : true,
-            onCancel:()=>{console.log("zxczxczxc")},
-            onConfirm :()=>{console.log("ssssssssss")}
+        document.getElementById("tutut_ok")?.addEventListener("click",()=>{
+            removeDom()
         })
     }
+
+    static info(message:Message,option:Option){
+        Tutut.renderHTML("info",message,option)
+    }
+
+    static success(message:Message,option:Option){
+        Tutut.renderHTML("success",message,option)
+    }
+
+    static warning(message:Message,option:Option){
+        Tutut.renderHTML("warning",message,option)
+    }
+
+    static danger(message:Message,option:Option){
+        Tutut.renderHTML("danger",message,option)
+    }
+
+    static confirm(message:Message,option:Option){
+        Tutut.renderHTML("confirm",message,option)
+    }
+
+    static delete(message:Message,option:Option){
+        Tutut.renderHTML("delete",message,option)
+    }
+    
 }
