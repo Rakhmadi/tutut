@@ -1,0 +1,135 @@
+    .tutut_modal{
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.349);
+        visibility: hidden;
+        justify-content: center;
+        align-items: center;
+        opacity: 0;
+        transition: all 0.3s ease ;
+        z-index: 9999;
+        position: fixed !important;
+        inset: 0;
+        display: flex;
+    }
+
+    .tutut_inner_modal{
+        width: 300px;
+        background-color: white;
+        display: flex;
+        flex-direction: column;
+        border-radius: 18px;
+        padding: 16px;
+        box-sizing: border-box;
+        gap: 8px;
+        opacity: 0;
+        visibility: hidden;
+        transform: scale(0.7);
+        transition: all 0.3s ease ,transform 0.3s ease;
+
+    }
+
+    /* Baris atas: icon + teks + X button */
+    .tutut_top_row {
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .tutut_body_modal{
+        flex-grow: 1;
+        display: flex;
+        gap: 14px;
+    }
+
+    /* Baris bawah: tombol OK sejajar dengan X */
+    .tutut_bottom_row {
+        display: flex;
+        justify-content: flex-end; /* geser ke kanan, sejajar X */
+        gap: 8px;
+    }
+
+    .tutut_cls_button{
+        fill: rgba(0, 0, 0, 0.432);
+        width: 20px;
+        height: 20px;
+        flex-shrink: 0;
+        cursor: pointer;
+    }
+    .tutut_cls_button:hover{
+        fill: rgba(0, 0, 0, 0.61);
+    }
+
+    .tutut_icon_modal{
+        fill: oklch(59.67% 0.21915 262.845);
+        width: 20px;
+        height: 20px;
+        flex-shrink: 0;
+    }
+
+    .tutut_icon_modal_default{
+        fill: oklch(59.67% 0.21915 262.845);
+    }
+
+    .tutut_icon_modal_warning{
+        fill: oklch(83.7% 0.128 66.29);
+
+    }
+
+    .tutut_icon_modal_danger{
+        fill: oklch(70.4% 0.191 22.216);
+
+    }
+
+    .tutut_inner_body_modal{
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .tutut_title_body{
+        font-size: 18px;
+        font-weight: 500;
+    }
+
+    .tutut_text_gray{
+        color: rgb(90, 90, 90);
+    }
+
+    .tutut_button{
+        padding: 0.25rem 0.5rem;
+        border-radius: 6px;
+        border: 0px solid;
+        cursor: pointer;
+        opacity: 100%;
+    }
+    
+    .tutut_button:hover{
+        opacity: 80%;
+    }
+
+    .tutut_button_default {
+        background-color: oklch(59.67% 0.21915 262.845);
+        color: white;
+    }
+    
+    .tutut_button_warning{
+        background-color: oklch(83.7% 0.128 66.29);
+        color: rgb(53, 53, 53);
+    }
+    
+    .tutut_button_gray{
+        background-color: oklch(87.2% 0.01 258.338);
+        color: rgb(53, 53, 53);
+    }
+
+    .tutut_button_danger{
+        background-color: oklch(70.4% 0.191 22.216);
+        color: white;
+    }
+
+    .tutut_active{
+        opacity: 1; 
+        transform: scale(1);
+        visibility: visible;
+    }
