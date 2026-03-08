@@ -5,32 +5,220 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 <link rel="stylesheet" href="./style.css">
+<style> 
+
+
+html,body{font-family: Arial, Helvetica, sans-serif;}
+
+.btn {
+    margin-top: 10px;
+  padding: 10px 18px;
+  border: none;
+  border-radius: 6px;
+  background: #3498db;
+  color: white;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.btn:hover {
+  background: #2980b9;
+}
+
+.btn-success {
+  background: #2ecc71;
+}
+
+.btn-success:hover {
+  background: #27ae60;
+}
+
+.btn-danger {
+  background: #e74c3c;
+}
+
+.btn-danger:hover {
+  background: #c0392b;
+}
+
+
+</style>
 <script src="./dist/index.js"></script>
 </head>
 <body>
-<button onclick="open_modal()">open modal</button>
+<img src="./Logo.png" width="300px">
+<span>TUTUT by rakhmadi</span>
+<h3>basic</h3>
+<button class="btn" onclick="info()">info</button>
+<button class="btn" onclick="success()">success</button>
+<button class="btn" onclick="warning()">warning</button>
+<button class="btn" onclick="danger()">danger</button>
+<button class="btn" onclick="confirm()">confirm</button>
+<button class="btn" onclick="deletes()">delete</button>
+<button class="btn" onclick="question()">question</button>
+<h3>With Confirm Button</h3>
+<button class="btn" onclick="success_basic()">success</button>
+<button class="btn" onclick="warning_callback()">warning</button>
+<button class="btn" onclick="confirm_callback()">confirm</button>
+<button class="btn" onclick="danger_callback()">danger</button>
+<button class="btn" onclick="deletes_callback()">delete</button>
+<h3>pop up modal in callback </h3>
+<button class="btn" onclick="deletes_callback2()">delete</button>
+<h3>disabled overlay close</h3>
+<button class="btn" onclick="success_basic2()">success</button>
+
 <script>
 
-    let open_modal = ()=>{
-        Tutut.info()
-    }
-            Tutut.delete({
-                title : "Message",
-                text : "Data akan di hapus apa anda yakin?"
-            },{
-                showConfirm : true,
-                onConfirm : ()=>{
+let info = ()=>{
+    Tutut.info({
+        title : "Title",
+        text : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus neque enim, mollis dapibus pellentesque quis, aliquet pretium diam."
+    })
+}
 
-                    Tutut.info({
-                        title : "Message",
-                        text : "Data Berhasil Di Hapus"
-                    },{
-                        showConfirm : true,
-                    })
+let success = ()=>{
+    Tutut.success({
+        title : "Title",
+        text : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus neque enim, mollis dapibus pellentesque quis, aliquet pretium diam."
+    })
+}
 
-                },
-                onCancel : true
-            })
+let warning = ()=>{
+    Tutut.warning({
+        title : "Title",
+        text : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus neque enim, mollis dapibus pellentesque quis, aliquet pretium diam."
+    })
+}
+
+let danger = ()=>{
+    Tutut.danger({
+        title : "Title",
+        text : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus neque enim, mollis dapibus pellentesque quis, aliquet pretium diam."
+    })
+}
+
+let confirm = ()=>{
+    Tutut.confirm({
+        title : "Title",
+        text : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus neque enim, mollis dapibus pellentesque quis, aliquet pretium diam."
+    })
+}
+
+let deletes = ()=>{
+    Tutut.delete({
+        title : "Title",
+        text : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus neque enim, mollis dapibus pellentesque quis, aliquet pretium diam."
+    })
+}
+
+let question = ()=>{    
+    Tutut.question({
+        title : "Title",
+        text : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus neque enim, mollis dapibus pellentesque quis, aliquet pretium diam."
+    })
+}
+
+let success_basic = ()=>{
+    Tutut.success({
+        title : "Title",
+        text : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus neque enim, mollis dapibus pellentesque quis, aliquet pretium diam."
+    },{
+        showConfirm : true,
+        onOke : ()=>{
+            alert("oke")
+        }
+    })
+}
+
+let warning_callback = ()=>{
+    Tutut.warning({
+        title : "Title",
+        text : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus neque enim, mollis dapibus pellentesque quis, aliquet pretium diam."
+    },{
+        showConfirm : true, 
+        onConfirm : ()=>{
+            alert("Confirm Clicked")
+        },
+        onCancel:()=>{
+            alert("Cancel Clicked")
+        }
+    })
+}
+
+// With Confirm Button 
+
+let danger_callback = ()=>{
+    Tutut.danger({
+        title : "Title",
+        text : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus neque enim, mollis dapibus pellentesque quis, aliquet pretium diam."
+    },{
+        showConfirm : true, 
+        onConfirm : ()=>{
+            alert("Confirm Clicked")
+        },
+        onCancel:()=>{
+            alert("Cancel Clicked")
+        }
+    })
+}
+
+let confirm_callback = ()=>{
+    Tutut.confirm({
+        title : "Title",
+        text : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus neque enim, mollis dapibus pellentesque quis, aliquet pretium diam."
+    },{
+        showConfirm : true, 
+        onConfirm : ()=>{
+            alert("Confirm Clicked")
+        },
+        onCancel:()=>{
+            alert("Cancel Clicked")
+        }
+    })
+}
+
+let deletes_callback = ()=>{
+    Tutut.delete({
+        title : "Title",
+        text : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus neque enim, mollis dapibus pellentesque quis, aliquet pretium diam."
+    },{
+        showConfirm : true, 
+        onConfirm : ()=>{
+            alert("Confirm Clicked")
+        },
+        onCancel:()=>{
+            alert("Cancel Clicked")
+        }
+    })
+}
+
+let deletes_callback2 = ()=>{
+    Tutut.delete({
+        title : "Title",
+        text : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus neque enim, mollis dapibus pellentesque quis, aliquet pretium diam."
+    },{
+        showConfirm : true, 
+        onConfirm : ()=>{
+            Tutut.success({
+                title : "Title",
+                text : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus neque enim, mollis dapibus pellentesque quis, aliquet pretium diam."
+            },{showConfirm:true})
+        },
+        onCancel:()=>{
+            alert("Cancel Clicked")
+        }
+    })
+}
+
+let success_basic2 = ()=>{
+    Tutut.success({
+        title : "Title",
+        text : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus neque enim, mollis dapibus pellentesque quis, aliquet pretium diam."
+    },{overlayClose:false})
+}
+
+
 
 
 //   let modal = document.getElementById("modal")

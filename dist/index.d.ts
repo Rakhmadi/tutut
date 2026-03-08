@@ -5,8 +5,10 @@ type Message = {
 type Option = {
     showCloseButton?: boolean;
     showConfirm?: boolean;
+    overlayClose?: boolean;
     onConfirm?: Function | undefined;
     onCancel?: Function | undefined;
+    onOke?: Function | undefined;
 };
 declare class Tutut {
     static renderHTML(type_msg: string, message: Message, option?: Partial<Option>): void;
@@ -16,4 +18,5 @@ declare class Tutut {
     static danger(message: Message, option: Option): void;
     static confirm(message: Message, option: Option): void;
     static delete(message: Message, option: Option): void;
+    static question(message: Message, option: Option): void;
 }

@@ -7,18 +7,19 @@ type Message = {
 type Option = {
     showCloseButton?: boolean,
     showConfirm?: boolean,
+    overlayClose?:boolean,
     onConfirm?:  Function | undefined,
-    onCancel?:  Function | undefined
+    onCancel?:  Function | undefined,
+    onOke?: Function | undefined
 }
 
 class Tutut { 
     static renderHTML(type_msg:string,message:Message,option:Partial<Option> = {}){
 
-        const { showConfirm, onConfirm, onCancel, showCloseButton } = option
+        let { showConfirm, onConfirm, onCancel,onOke, showCloseButton,overlayClose } = option
         //clearing 
         document.getElementById("modal")?.remove()
 
-        
         let div_icon;
 
         // conditional of type icon
@@ -58,11 +59,17 @@ class Tutut {
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M256 512a256 256 0 1 1 0-512 256 256 0 1 1 0 512zm0-192a32 32 0 1 0 0 64 32 32 0 1 0 0-64zm0-192c-18.2 0-32.7 15.5-31.4 33.7l7.4 104c.9 12.6 11.4 22.3 23.9 22.3 12.6 0 23-9.7 23.9-22.3l7.4-104c1.3-18.2-13.1-33.7-31.4-33.7z"/></svg>
                 </div>
             `
+        }else if(type_msg === "question"){
+            div_icon = `
+                <div class="tutut_icon_modal tutut_icon_modal_question">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M256 512a256 256 0 1 0 0-512 256 256 0 1 0 0 512zm0-336c-17.7 0-32 14.3-32 32 0 13.3-10.7 24-24 24s-24-10.7-24-24c0-44.2 35.8-80 80-80s80 35.8 80 80c0 47.2-36 67.2-56 74.5l0 3.8c0 13.3-10.7 24-24 24s-24-10.7-24-24l0-8.1c0-20.5 14.8-35.2 30.1-40.2 6.4-2.1 13.2-5.5 18.2-10.3 4.3-4.2 7.7-10 7.7-19.6 0-17.7-14.3-32-32-32zM224 368a32 32 0 1 1 64 0 32 32 0 1 1 -64 0z"/></svg>
+                </div>
+            `
         }else{
             throw new Error("Type Msg = info | success | warning | danger | confirm | delete");
         }
 
-        //conditional of confirm button
+        //conditional of confirm button 
         let button_grup;
         if(showConfirm && type_msg === "delete"){
             button_grup = `
@@ -71,11 +78,25 @@ class Tutut {
                     <button class="tutut_button tutut_button_danger" id="tutut_confirm">Delete</button>
                 </div>
             `
+        }else if(showConfirm && type_msg === "danger"){
+            button_grup = `
+                <div class="tutut_bottom_row">
+                    <button class="tutut_button tutut_button_gray" id="tutut_cancel">Cancel</button>
+                    <button class="tutut_button tutut_button_danger" id="tutut_confirm">Confirm</button>
+                </div>
+            `
         }else if(showConfirm && type_msg === "warning"){
             button_grup = `
                 <div class="tutut_bottom_row">
                     <button class="tutut_button tutut_button_gray" id="tutut_cancel">Cancel</button>
                     <button class="tutut_button tutut_button_warning" id="tutut_confirm">Confirm</button>
+                </div>
+            `
+        }else if(showConfirm && type_msg === "confirm"){
+            button_grup = `
+                <div class="tutut_bottom_row">
+                    <button class="tutut_button tutut_button_gray" id="tutut_cancel">Cancel</button>
+                    <button class="tutut_button tutut_button_default" id="tutut_confirm">Confirm</button>
                 </div>
             `
         }else if(showConfirm){
@@ -130,11 +151,15 @@ class Tutut {
             cls_btn.style.display = "none"
         }
 
-        modal.onclick = (e:any)=>{
-            if(e.target === e.currentTarget){
-                removeDom()             
+        if(overlayClose === undefined || overlayClose){
+            modal.onclick = (e:any)=>{
+                if(e.target === e.currentTarget){
+                    removeDom()             
+                }
             }
         }
+
+
         
         cls_btn.onclick = ()=>{
             removeDom()
@@ -150,6 +175,7 @@ class Tutut {
         })
         document.getElementById("tutut_ok")?.addEventListener("click",()=>{
             removeDom()
+            onOke && onOke()
         })
     }
 
@@ -175,6 +201,10 @@ class Tutut {
 
     static delete(message:Message,option:Option){
         Tutut.renderHTML("delete",message,option)
+    }
+
+    static question(message:Message,option:Option){
+        Tutut.renderHTML("question",message,option)
     }
     
 }

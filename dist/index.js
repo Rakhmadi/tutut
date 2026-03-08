@@ -2,7 +2,7 @@
 class Tutut {
     static renderHTML(type_msg, message, option = {}) {
         var _a, _b, _c, _d, _e;
-        const { showConfirm, onConfirm, onCancel, showCloseButton } = option;
+        let { showConfirm, onConfirm, onCancel, onOke, showCloseButton, overlayClose } = option;
         (_a = document.getElementById("modal")) === null || _a === void 0 ? void 0 : _a.remove();
         let div_icon;
         if (type_msg === "info") {
@@ -47,6 +47,13 @@ class Tutut {
                 </div>
             `;
         }
+        else if (type_msg === "question") {
+            div_icon = `
+                <div class="tutut_icon_modal tutut_icon_modal_question">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M256 512a256 256 0 1 0 0-512 256 256 0 1 0 0 512zm0-336c-17.7 0-32 14.3-32 32 0 13.3-10.7 24-24 24s-24-10.7-24-24c0-44.2 35.8-80 80-80s80 35.8 80 80c0 47.2-36 67.2-56 74.5l0 3.8c0 13.3-10.7 24-24 24s-24-10.7-24-24l0-8.1c0-20.5 14.8-35.2 30.1-40.2 6.4-2.1 13.2-5.5 18.2-10.3 4.3-4.2 7.7-10 7.7-19.6 0-17.7-14.3-32-32-32zM224 368a32 32 0 1 1 64 0 32 32 0 1 1 -64 0z"/></svg>
+                </div>
+            `;
+        }
         else {
             throw new Error("Type Msg = info | success | warning | danger | confirm | delete");
         }
@@ -59,11 +66,27 @@ class Tutut {
                 </div>
             `;
         }
+        else if (showConfirm && type_msg === "danger") {
+            button_grup = `
+                <div class="tutut_bottom_row">
+                    <button class="tutut_button tutut_button_gray" id="tutut_cancel">Cancel</button>
+                    <button class="tutut_button tutut_button_danger" id="tutut_confirm">Confirm</button>
+                </div>
+            `;
+        }
         else if (showConfirm && type_msg === "warning") {
             button_grup = `
                 <div class="tutut_bottom_row">
                     <button class="tutut_button tutut_button_gray" id="tutut_cancel">Cancel</button>
                     <button class="tutut_button tutut_button_warning" id="tutut_confirm">Confirm</button>
+                </div>
+            `;
+        }
+        else if (showConfirm && type_msg === "confirm") {
+            button_grup = `
+                <div class="tutut_bottom_row">
+                    <button class="tutut_button tutut_button_gray" id="tutut_cancel">Cancel</button>
+                    <button class="tutut_button tutut_button_default" id="tutut_confirm">Confirm</button>
                 </div>
             `;
         }
@@ -109,11 +132,13 @@ class Tutut {
         if (!showCloseButton && showCloseButton !== undefined) {
             cls_btn.style.display = "none";
         }
-        modal.onclick = (e) => {
-            if (e.target === e.currentTarget) {
-                removeDom();
-            }
-        };
+        if (overlayClose === undefined || overlayClose) {
+            modal.onclick = (e) => {
+                if (e.target === e.currentTarget) {
+                    removeDom();
+                }
+            };
+        }
         cls_btn.onclick = () => {
             removeDom();
         };
@@ -127,6 +152,7 @@ class Tutut {
         });
         (_e = document.getElementById("tutut_ok")) === null || _e === void 0 ? void 0 : _e.addEventListener("click", () => {
             removeDom();
+            onOke && onOke();
         });
     }
     static info(message, option) {
@@ -146,5 +172,8 @@ class Tutut {
     }
     static delete(message, option) {
         Tutut.renderHTML("delete", message, option);
+    }
+    static question(message, option) {
+        Tutut.renderHTML("question", message, option);
     }
 }
