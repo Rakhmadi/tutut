@@ -10,13 +10,13 @@ type Option = {
     overlayClose?:boolean,
     onConfirm?:  Function | undefined,
     onCancel?:  Function | undefined,
-    onOke?: Function | undefined
+    onOk?: Function | undefined
 }
 
-class Tutut { 
-    static renderHTML(type_msg:string,message:Message,option:Partial<Option> = {}){
+export default class Tutut { 
+    static renderTutut(type_msg:string,message:Message,option:Partial<Option> = {}){
 
-        let { showConfirm, onConfirm, onCancel,onOke, showCloseButton,overlayClose } = option
+        let { showConfirm, onConfirm, onCancel,onOk, showCloseButton,overlayClose } = option
         //clearing 
         document.getElementById("modal")?.remove()
 
@@ -131,8 +131,8 @@ class Tutut {
     // add element to body
         document.querySelector("body")?.insertAdjacentHTML("beforeend",html_modal)
 
-        let modal:any = document.getElementById("modal")
-        let inner_modal:any = document.getElementById("inner_modal")
+        let modal = document.getElementById("modal") as HTMLDivElement
+        let inner_modal = document.getElementById("inner_modal") as HTMLDivElement
 
         //start poping
         setTimeout(()=>{
@@ -145,7 +145,7 @@ class Tutut {
             modal.classList.remove("tutut_active")
         }
 
-        let cls_btn:any =document.getElementById("cls_btn")
+        let cls_btn = document.getElementById("cls_btn") as HTMLElement 
 
         if(!showCloseButton && showCloseButton !== undefined){
             cls_btn.style.display = "none"
@@ -159,8 +159,6 @@ class Tutut {
             }
         }
 
-
-        
         cls_btn.onclick = ()=>{
             removeDom()
         }
@@ -175,36 +173,35 @@ class Tutut {
         })
         document.getElementById("tutut_ok")?.addEventListener("click",()=>{
             removeDom()
-            onOke && onOke()
+            onOk && onOk()
         })
     }
 
     static info(message:Message,option:Option){
-        Tutut.renderHTML("info",message,option)
+        Tutut.renderTutut("info",message,option)
     }
 
     static success(message:Message,option:Option){
-        Tutut.renderHTML("success",message,option)
+        Tutut.renderTutut("success",message,option)
     }
 
     static warning(message:Message,option:Option){
-        Tutut.renderHTML("warning",message,option)
+        Tutut.renderTutut("warning",message,option)
     }
 
     static danger(message:Message,option:Option){
-        Tutut.renderHTML("danger",message,option)
+        Tutut.renderTutut("danger",message,option)
     }
 
     static confirm(message:Message,option:Option){
-        Tutut.renderHTML("confirm",message,option)
+        Tutut.renderTutut("confirm",message,option)
     }
 
     static delete(message:Message,option:Option){
-        Tutut.renderHTML("delete",message,option)
+        Tutut.renderTutut("delete",message,option)
     }
 
     static question(message:Message,option:Option){
-        Tutut.renderHTML("question",message,option)
+        Tutut.renderTutut("question",message,option)
     }
-    
 }

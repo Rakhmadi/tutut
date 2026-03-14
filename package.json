@@ -1,8 +1,32 @@
 {
   "name": "tutut",
   "version": "1.0.0",
-  "description": "",
-  "license": "ISC",
+  "description": "Tutut is a JavaScript library used to create simple popup alerts.",
+  "keywords": [
+    "popup",
+    "alert",
+    "modal",
+    "dialog",
+    "notification",
+    "javascript-alert",
+    "popup-modal",
+    "custom-alert",
+    "ui-alert",
+    "frontend-ui",
+    "confirm-dialog",
+    "delete-confirmation",
+    "popup-notification",
+    "tutut-alert"
+  ],
+  "homepage": "https://github.com/Rakhmadi/tutut#readme",
+  "bugs": {
+    "url": "https://github.com/Rakhmadi/tutut/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Rakhmadi/tutut.git"
+  },
+  "license": "MIT",
   "author": "",
   "type": "commonjs",
   "main": "index.js",
@@ -11,5 +35,6 @@
   },
   "dependencies": {
     "typescript": "^5.9.3"
-  }
+  },
+  "devDependencies": {}
 }

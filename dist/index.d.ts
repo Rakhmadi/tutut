@@ -8,10 +8,10 @@ type Option = {
     overlayClose?: boolean;
     onConfirm?: Function | undefined;
     onCancel?: Function | undefined;
-    onOke?: Function | undefined;
+    onOk?: Function | undefined;
 };
-declare class Tutut {
-    static renderHTML(type_msg: string, message: Message, option?: Partial<Option>): void;
+export default class Tutut {
+    static renderTutut(type_msg: string, message: Message, option?: Partial<Option>): void;
     static info(message: Message, option: Option): void;
     static success(message: Message, option: Option): void;
     static warning(message: Message, option: Option): void;
@@ -20,3 +20,4 @@ declare class Tutut {
     static delete(message: Message, option: Option): void;
     static question(message: Message, option: Option): void;
 }
+export {};

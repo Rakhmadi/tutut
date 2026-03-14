@@ -61,14 +61,13 @@
     }
 
     .tutut_icon_modal{
-        fill: oklch(59.67% 0.21915 262.845);
         width: 20px;
         height: 20px;
         flex-shrink: 0;
     }
 
     .tutut_icon_modal_default{
-        fill: oklch(59.67% 0.21915 262.845);
+        fill: oklch(70.7% 0.165 254.624);
     }
 
     .tutut_icon_modal_question{
@@ -113,7 +112,7 @@
     }
 
     .tutut_button_default {
-        background-color: oklch(59.67% 0.21915 262.845);
+        background-color: oklch(70.7% 0.165 254.624);
         color: white;
     }
     

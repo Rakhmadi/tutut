@@ -48,6 +48,10 @@ html,body{font-family: Arial, Helvetica, sans-serif;}
 </head>
 <body>
 <img src="./Logo.png" width="300px">
+<br>
+<br>
+<span>Tutut is a JavaScript library used to create simple popup alerts.</span>
+<br>
 <span>TUTUT by rakhmadi</span>
 <h3>basic</h3>
 <button class="btn" onclick="info()">info</button>
@@ -65,67 +69,70 @@ html,body{font-family: Arial, Helvetica, sans-serif;}
 <button class="btn" onclick="deletes_callback()">delete</button>
 <h3>pop up modal in callback </h3>
 <button class="btn" onclick="deletes_callback2()">delete</button>
-<h3>disabled overlay close</h3>
+<h3> disabled overlay close</h3>
 <button class="btn" onclick="success_basic2()">success</button>
 
+<script type="module">
+import Tutut from './dist/index.js'
+window.Tutut = Tutut
+</script>
 <script>
-
 let info = ()=>{
     Tutut.info({
         title : "Title",
-        text : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus neque enim, mollis dapibus pellentesque quis, aliquet pretium diam."
+        text : "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
     })
 }
 
 let success = ()=>{
     Tutut.success({
         title : "Title",
-        text : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus neque enim, mollis dapibus pellentesque quis, aliquet pretium diam."
+        text : "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
     })
 }
 
 let warning = ()=>{
     Tutut.warning({
         title : "Title",
-        text : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus neque enim, mollis dapibus pellentesque quis, aliquet pretium diam."
+        text : "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
     })
 }
 
 let danger = ()=>{
     Tutut.danger({
         title : "Title",
-        text : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus neque enim, mollis dapibus pellentesque quis, aliquet pretium diam."
+        text : "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
     })
 }
 
 let confirm = ()=>{
     Tutut.confirm({
         title : "Title",
-        text : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus neque enim, mollis dapibus pellentesque quis, aliquet pretium diam."
+        text : "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
     })
 }
 
 let deletes = ()=>{
     Tutut.delete({
         title : "Title",
-        text : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus neque enim, mollis dapibus pellentesque quis, aliquet pretium diam."
+        text : "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
     })
 }
 
 let question = ()=>{    
     Tutut.question({
         title : "Title",
-        text : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus neque enim, mollis dapibus pellentesque quis, aliquet pretium diam."
+        text : "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
     })
 }
 
 let success_basic = ()=>{
     Tutut.success({
         title : "Title",
-        text : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus neque enim, mollis dapibus pellentesque quis, aliquet pretium diam."
+        text : "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
     },{
         showConfirm : true,
-        onOke : ()=>{
+        onOk : ()=>{
             alert("oke")
         }
     })
@@ -134,7 +141,7 @@ let success_basic = ()=>{
 let warning_callback = ()=>{
     Tutut.warning({
         title : "Title",
-        text : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus neque enim, mollis dapibus pellentesque quis, aliquet pretium diam."
+        text : "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
     },{
         showConfirm : true, 
         onConfirm : ()=>{
@@ -151,7 +158,7 @@ let warning_callback = ()=>{
 let danger_callback = ()=>{
     Tutut.danger({
         title : "Title",
-        text : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus neque enim, mollis dapibus pellentesque quis, aliquet pretium diam."
+        text : "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
     },{
         showConfirm : true, 
         onConfirm : ()=>{
@@ -166,7 +173,7 @@ let danger_callback = ()=>{
 let confirm_callback = ()=>{
     Tutut.confirm({
         title : "Title",
-        text : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus neque enim, mollis dapibus pellentesque quis, aliquet pretium diam."
+        text : "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
     },{
         showConfirm : true, 
         onConfirm : ()=>{
@@ -181,7 +188,7 @@ let confirm_callback = ()=>{
 let deletes_callback = ()=>{
     Tutut.delete({
         title : "Title",
-        text : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus neque enim, mollis dapibus pellentesque quis, aliquet pretium diam."
+        text : "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
     },{
         showConfirm : true, 
         onConfirm : ()=>{
@@ -196,13 +203,13 @@ let deletes_callback = ()=>{
 let deletes_callback2 = ()=>{
     Tutut.delete({
         title : "Title",
-        text : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus neque enim, mollis dapibus pellentesque quis, aliquet pretium diam."
+        text : "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
     },{
         showConfirm : true, 
         onConfirm : ()=>{
             Tutut.success({
                 title : "Title",
-                text : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus neque enim, mollis dapibus pellentesque quis, aliquet pretium diam."
+                text : "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
             },{showConfirm:true})
         },
         onCancel:()=>{
@@ -214,33 +221,11 @@ let deletes_callback2 = ()=>{
 let success_basic2 = ()=>{
     Tutut.success({
         title : "Title",
-        text : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus neque enim, mollis dapibus pellentesque quis, aliquet pretium diam."
+        text : "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
     },{overlayClose:false})
 }
 
 
-
-
-//   let modal = document.getElementById("modal")
-//         let inner_modal = document.getElementById("inner_modal")
-//         let cls_btn =document.getElementById("cls_btn")
-         
-//         modal.onclick = (e)=>{
-//             if(e.target === e.currentTarget){
-//                 inner_modal.classList.remove("tutut_active")
-//                 modal.classList.remove("tutut_active")
-//             }
-//         }
-        
-//         cls_btn.onclick = ()=>{
-//             inner_modal.classList.remove("tutut_active")
-//             modal.classList.remove("tutut_active")
-//         }
-
-//         function open_modal(){
-//             inner_modal.classList.add("tutut_active")
-//             modal.classList.add("tutut_active")
-//         }
 </script>
 </body>
 </html>

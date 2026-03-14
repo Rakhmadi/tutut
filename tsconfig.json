@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
-    "target": "ES2018",
-    "module": "ESNext",
+    "target": "ES2017",
+    "module": "es6",
     "lib": ["DOM", "ES2018"],
     "declaration": true,
     "outDir": "./dist",
@@ -9,6 +9,8 @@
     "moduleResolution": "Node",
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "removeComments": true
+    "removeComments": true,
+    "noUnusedLocals": false,
+    "noUnusedParameters": false 
   },
 }

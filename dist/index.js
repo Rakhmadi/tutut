@@ -1,8 +1,7 @@
-"use strict";
-class Tutut {
-    static renderHTML(type_msg, message, option = {}) {
+export default class Tutut {
+    static renderTutut(type_msg, message, option = {}) {
         var _a, _b, _c, _d, _e;
-        let { showConfirm, onConfirm, onCancel, onOke, showCloseButton, overlayClose } = option;
+        let { showConfirm, onConfirm, onCancel, onOk, showCloseButton, overlayClose } = option;
         (_a = document.getElementById("modal")) === null || _a === void 0 ? void 0 : _a.remove();
         let div_icon;
         if (type_msg === "info") {
@@ -152,28 +151,28 @@ class Tutut {
         });
         (_e = document.getElementById("tutut_ok")) === null || _e === void 0 ? void 0 : _e.addEventListener("click", () => {
             removeDom();
-            onOke && onOke();
+            onOk && onOk();
         });
     }
     static info(message, option) {
-        Tutut.renderHTML("info", message, option);
+        Tutut.renderTutut("info", message, option);
     }
     static success(message, option) {
-        Tutut.renderHTML("success", message, option);
+        Tutut.renderTutut("success", message, option);
     }
     static warning(message, option) {
-        Tutut.renderHTML("warning", message, option);
+        Tutut.renderTutut("warning", message, option);
     }
     static danger(message, option) {
-        Tutut.renderHTML("danger", message, option);
+        Tutut.renderTutut("danger", message, option);
     }
     static confirm(message, option) {
-        Tutut.renderHTML("confirm", message, option);
+        Tutut.renderTutut("confirm", message, option);
     }
     static delete(message, option) {
-        Tutut.renderHTML("delete", message, option);
+        Tutut.renderTutut("delete", message, option);
     }
     static question(message, option) {
-        Tutut.renderHTML("question", message, option);
+        Tutut.renderTutut("question", message, option);
     }
 }
