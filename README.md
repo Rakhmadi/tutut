@@ -1,6 +1,7 @@
 ## Tutut ( create simple popup alerts)
 
 Tutut is a JavaScript library used to create simple popup alerts.
+
 <img src="Logo.png" width="250"/>
 
 ### ✨Purpose
