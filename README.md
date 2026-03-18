@@ -4,7 +4,7 @@ Tutut is a JavaScript library used to create simple popup alerts.
 
 <img src="Logo.png" width="250"/>
 
-[Klik di sini](https://super-zuccutto-fc83ff.netlify.app/)
+[DEMO --](https://super-zuccutto-fc83ff.netlify.app/)
 
 ### ✨Purpose
 - Notify the user
